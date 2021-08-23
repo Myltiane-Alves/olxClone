@@ -36,6 +36,7 @@ const Page = () => {
 
         if(password !== confirmPassword){
             setError('Senhas não batem');
+            setDisabled(false);
             return;
         }
 

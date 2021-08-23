@@ -50,6 +50,9 @@ const Header = () => {
                                 <li>
                                     <Link to="/signup">Cadastrar</Link>
                                 </li>
+                                <li>
+                                    <Link to="/signin" className="button">Poste um anúncio</Link>
+                                </li>
                             </>
                         }
                         

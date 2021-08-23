@@ -11,14 +11,11 @@ import Footer from './components/partials/Footer';
 import Routes from './Routes';
 
 const Page = (props) => {
-
   return (
     <BrowserRouter>
       <Template>
         <Header />
-
-          <Routes />
-
+        <Routes />
         <Footer />
       </Template>
     </BrowserRouter>

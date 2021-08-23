@@ -16,10 +16,10 @@ export default () => {
             <Route exact path="/About">
                 <About />
             </Route>
-            <Route exact path="/SignIn">
+            <Route exact path="/signin">
                 <SignIn />
             </Route>
-            <Route exact path="/SignUp">
+            <Route exact path="/signup">
                 <SignUp />
             </Route>
             <Route>
