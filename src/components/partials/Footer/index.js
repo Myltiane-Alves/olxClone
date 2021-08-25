@@ -1,10 +1,10 @@
 import React from 'react';
-import {FooterArea} from './styled';
+import { FooterArea } from './styled';
 
 const Footer = () => {
-    return(
+    return (
         <FooterArea>
-            footer
+            ...
         </FooterArea>
     );
 }

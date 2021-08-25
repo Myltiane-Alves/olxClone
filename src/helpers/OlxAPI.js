@@ -1,18 +1,28 @@
 import Cookies from 'js-cookie';
 import qs from 'qs';
 
-
-
-
-
-
-
-
-
-
-
 const BASEAPI = 'http://alunos.b7web.com.br:501';
 
+const apiFetchFile = async (endpoint, body) => {
+    if(!body.token) {
+        let token = Cookies.get('token');
+        if(token) {
+            body.append('token', token);
+        }
+    }
+    const res = await fetch(BASEAPI+endpoint, {
+        method:'POST',
+        body
+    });
+    const json = await res.json();
+    
+    if(json.notallowed) {
+        window.location.href = '/signin';
+        return;
+    }
+
+    return json;
+}
 const apiFetchPost = async (endpoint, body) => {
     if(!body.token) {
         let token = Cookies.get('token');
@@ -20,10 +30,9 @@ const apiFetchPost = async (endpoint, body) => {
             body.token = token;
         }
     }
-    
     const res = await fetch(BASEAPI+endpoint, {
-        method: 'POST',
-        headers: {
+        method:'POST',
+        headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
@@ -31,14 +40,13 @@ const apiFetchPost = async (endpoint, body) => {
     });
     const json = await res.json();
 
-    if(json.notallowed){
+    if(json.notallowed) {
         window.location.href = '/signin';
         return;
     }
 
     return json;
 }
-
 const apiFetchGet = async (endpoint, body = []) => {
     if(!body.token) {
         let token = Cookies.get('token');
@@ -49,7 +57,7 @@ const apiFetchGet = async (endpoint, body = []) => {
     const res = await fetch(`${BASEAPI+endpoint}?${qs.stringify(body)}`);
     const json = await res.json();
 
-    if(json.notallowed){
+    if(json.notallowed) {
         window.location.href = '/signin';
         return;
     }
@@ -60,7 +68,6 @@ const apiFetchGet = async (endpoint, body = []) => {
 const OlxAPI = {
 
     login:async (email, password) => {
-        // aqui faz a consulta ao webServices fazendo o login
         const json = await apiFetchPost(
             '/user/signin',
             {email, password}
@@ -82,11 +89,36 @@ const OlxAPI = {
         );
         return json.states;
     },
+
     getCategories:async () => {
         const json = await apiFetchGet(
             '/categories'
         );
         return json.categories;
+    },
+
+    getAds:async (options) => {
+        const json = await apiFetchGet(
+            '/ad/list',
+            options
+        );
+        return json;
+    },
+
+    getAd:async (id, other = false) => {
+        const json = await apiFetchGet(
+            '/ad/item',
+            {id, other}
+        );
+        return json;
+    },
+
+    addAd:async (fData) => {
+        const json = await apiFetchFile(
+            '/ad/add',
+            fData
+        );
+        return json;
     }
 
 };

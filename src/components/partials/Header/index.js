@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { HeaderArea } from './styled';
 
 import { isLogged, doLogout } from '../../../helpers/AuthHandler';
@@ -24,26 +24,21 @@ const Header = () => {
                 </div>
                 <nav>
                     <ul>
-                       { /*  se ele estiver logado */}
-
-                        {logged && 
+                        {logged &&
                             <>
-                               <li>
-                                    <Link to="/my-count">Minha Conta</Link>   
-                                </li> 
                                 <li>
-                                   <button onClick={handleLogout}>Sair</button>
+                                    <Link to="/my-account">Minha Conta</Link>
                                 </li>
                                 <li>
-                                    <Link to="/post-an-ad" className="button" >Poste um anúncio</Link>
+                                    <button onClick={handleLogout}>Sair</button>
+                                </li>
+                                <li>
+                                    <Link to="/post-an-ad" className="button">Poste um anúncio</Link>
                                 </li>
                             </>
                         }
-
-                        { /*  se ele não estiver logado */}
-                        {!logged && 
+                        {!logged &&
                             <>
-
                                 <li>
                                     <Link to="/signin">Login</Link>
                                 </li>
@@ -55,7 +50,6 @@ const Header = () => {
                                 </li>
                             </>
                         }
-                        
                     </ul>
                 </nav>
             </div>

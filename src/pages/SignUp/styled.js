@@ -14,14 +14,14 @@ form {
         padding:10px;
         max-width:500px;
 
-        .area-title {
+        .area--title {
             width:200px;
             text-align:right;
             padding-right:20px;
             font-weight:bold;
             font-size:14px;
         }
-        .area-input {
+        .area--input {
             flex:1;
 
             input {

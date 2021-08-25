@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Page = () => {
-    return(
+    return (
         <div>
-            <h1>Página não Encontrada</h1>
+            <h1>Página não encontrada</h1>
 
-            <Link to="/">Volta para a Home</Link>
+            <Link to="/">Voltar para a HOME</Link>
         </div>
-    )
-};
+    );
+}
 
 export default Page;

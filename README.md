@@ -1,1 +1,0 @@
-Este Projeto feito em ReactJS usando styled components, Redux, token
